@@ -1,47 +1,42 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
-
-// Placeholders temporários
-const LoginPlaceholder = () => <div>Página de Login (Em construção)</div>;
-const PrivacyPlaceholder = () => <div>Página de Privacidade/LGPD (Em construção)</div>;
-const UserHomePlaceholder = () => <div>Listagem de Objetos (Em construção)</div>;
-const PorterDashboardPlaceholder = () => <div>Painel do Porteiro (Em construção)</div>;
-const AdminDashboardPlaceholder = () => <div>Painel do Administrador (Em construção)</div>;
+import Login from '../routes/Login';
+import RecoverPassword from '../routes/RecoverPassword';
+import Home from '../routes/user/Home';
+import ObjectDetails from '../routes/user/ObjectDetails';
+import PorterDashboard from '../routes/porter/PorterDashboard'; 
+import RegisterObject from '../routes/porter/RegisterObjects'; 
+import SignaledItems from '../routes/porter/SignaledItems';
+import DeliveredItems from '../routes/porter/DeliveredItems';
+import ArchivedItems from '../routes/porter/ArchivedItems';
+import ManagePorters from '../routes/admin/ManagePorters';
+import Privacy from '../routes/Privacy';
 
 export const router = createBrowserRouter([
+  { path: '/', element: <Login /> },
+  { path: '/recuperar-senha', element: <RecoverPassword /> },
+  { path: '/privacidade', element: <Privacy /> },
   {
-    path: '/',
-    element: <LoginPlaceholder />,
-  },
-  {
-    path: '/privacidade',
-    element: <PrivacyPlaceholder />,
-  },
-  {
-    // Rotas do Usuário Comum
     path: '/aluno',
     children: [
-      { path: '', element: <UserHomePlaceholder /> },
-      { path: 'objeto/:id', element: <div>Detalhes do Objeto (Em construção)</div> },
+      { path: '', element: <Home /> },
+      { path: 'objeto/:id', element: <ObjectDetails /> },
     ],
   },
   {
-    // Rotas do Porteiro
     path: '/porteiro',
     children: [
-      { path: '', element: <PorterDashboardPlaceholder /> },
-      { path: 'cadastrar', element: <div>Cadastrar Objeto (Em construção)</div> },
+      { path: '', element: <PorterDashboard /> },
+      { path: 'sinalizados', element: <SignaledItems /> },
+      { path: 'cadastrar', element: <RegisterObject /> },
+      { path: 'entregues', element: <DeliveredItems /> },
+      { path: 'arquivados', element: <ArchivedItems /> },
     ],
   },
   {
-    // Rotas do Admin
     path: '/admin',
     children: [
-      { path: '', element: <AdminDashboardPlaceholder /> },
+      { path: '', element: <ManagePorters /> },
     ],
   },
-  {
-    // Rota de fallback (qualquer URL invalida volta pro login)
-    path: '*',
-    element: <Navigate to="/" replace />,
-  },
+  { path: '*', element: <Navigate to="/" replace /> },
 ]);

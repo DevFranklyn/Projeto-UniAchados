@@ -1,13 +1,10 @@
-import { LostItem, User, Notification } from '../types';
+import type { LostItem, User } from '../types';
 
-// Usuários de teste (para simular o login)
 export const mockUsers: User[] = [
-  { id: '1', matricula: 'admin', name: 'Administrador UNINASSAU', role: 'ADMIN' },
-  { id: '2', matricula: 'porteiro', name: 'Carlos (Porteiro)', role: 'PORTEIRO' },
-  { id: '3', matricula: '2024001', name: 'Maria Silva (Aluna)', role: 'USUARIO' },
+  { id: '1', matricula: 'admin', email: 'admin@uninassau.edu.br', password: '123456', name: 'Administrador UNINASSAU', role: 'ADMIN' },
+  { id: '2', matricula: 'porteiro', email: 'porteiro@uninassau.edu.br', password: '123456', name: 'Carlos (Porteiro)', role: 'PORTEIRO' },
 ];
 
-// Objetos encontrados
 export const mockItems: LostItem[] = [
   {
     id: 'obj-1',
@@ -15,7 +12,7 @@ export const mockItems: LostItem[] = [
     description: 'Fone branco, marca JBL. Encontrado na tomada perto do quadro.',
     category: 'ELETRONICOS',
     location: 'Bloco B - Sala 204',
-    dateFound: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 dias atrás
+    dateFound: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(),
     imageUrl: 'https://placehold.co/400x300/EFF6FF/1E40AF?text=Fone+JBL',
     status: 'DISPONIVEL',
     porterId: '2',
@@ -45,28 +42,5 @@ export const mockItems: LostItem[] = [
     imageUrl: 'https://placehold.co/400x300/EFF6FF/1E40AF?text=Moletom',
     status: 'DISPONIVEL',
     porterId: '2',
-  },
-  {
-    id: 'obj-4',
-    title: 'Calculadora Científica',
-    description: 'Calculadora Casio, com o nome Rafa escrito na tampa.',
-    category: 'MATERIAIS',
-    location: 'Bloco C - Pátio',
-    dateFound: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000).toISOString(),
-    imageUrl: 'https://placehold.co/400x300/F8FAFC/0F172A?text=Calculadora',
-    status: 'DEVOLVIDO',
-    porterId: '2',
-  }
-];
-
-// Notificações para o Porteiro
-export const mockNotifications: Notification[] = [
-  {
-    id: 'not-1',
-    itemId: 'obj-2',
-    itemTitle: 'Carteira de Estudante',
-    date: new Date().toISOString(),
-    read: false,
-    type: 'SINALIZACAO',
   }
 ];

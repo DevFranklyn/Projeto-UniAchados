@@ -1,75 +1,19 @@
-# React + TypeScript + Vite
+# Achados e Perdidos - UNINASSAU (Front-end)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o protótipo front-end do sistema de Achados e Perdidos da UNINASSAU.
 
-Currently, two official plugins are available:
+## Como rodar o projeto
+1. Tenha o Node.js (versão 20+) instalado.
+2. Clone o repositório.
+3. No terminal, rode: `npm install`
+4. Após instalar, rode: `npm run dev`
+5. Acesse http://localhost:5173 no navegador.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Credenciais de Teste (Mock)
+* O token enviado por e-mail é sempre: `123456`
+* **Admin:** admin@uninassau.edu.br / Senha: 123456
+* **Porteiro:** porteiro@uninassau.edu.br / Senha: 123456
+* **Aluno:** use a opção "Primeiro Acesso" com qualquer e-mail terminado em `@uninassau.edu.br`.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+## Nota para o time de Back-end
+Todos os dados são mockados e salvos no `LocalStorage`. A estrutura de dados esperada pela API está definida em `src/types/index.ts`.

@@ -1,12 +1,12 @@
 export type UserRole = 'ADMIN' | 'PORTEIRO' | 'USUARIO';
-
 export type ObjectStatus = 'DISPONIVEL' | 'SINALIZADO' | 'DEVOLVIDO' | 'ARQUIVADO';
-
 export type Category = 'ELETRONICOS' | 'DOCUMENTOS' | 'VESTUARIO' | 'MATERIAIS' | 'OUTROS';
 
 export interface User {
   id: string;
-  matricula: string;
+  matricula?: string;
+  email: string;
+  password?: string;
   name: string;
   role: UserRole;
 }
@@ -16,20 +16,16 @@ export interface LostItem {
   title: string;
   description: string;
   category: Category;
-  location: string; // Ex: "Bloco A - Sala 102"
-  dateFound: string; // ISO String
+  location: string;
+  dateFound: string;
   imageUrl: string;
   status: ObjectStatus;
-  porterId: string; // Quem cadastrou
-  finderName?: string; // Nome de quem entregou (restrito a Admin/Porteiro)
-  finderMatricula?: string; // Matrícula de quem entregou (restrito a Admin/Porteiro)
-}
-
-export interface Notification {
-  id: string;
-  itemId: string;
-  itemTitle: string;
-  date: string;
-  read: boolean;
-  type: 'SINALIZACAO';
+  porterId: string;
+  finderName?: string;
+  finderMatricula?: string;
+  receivedByName?: string;
+  receivedByMatricula?: string;
+  receivedByCPF?: string;
+  receivedByAddress?: string;
+  deliveredAt?: string;
 }
